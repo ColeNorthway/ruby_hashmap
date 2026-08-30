@@ -58,6 +58,9 @@ class HashMap
 
   private
 
+  attr_accessor :capacity, :buckets
+  attr_reader :load_factor
+
   def realloc?
     threshold = (@capacity * @load_factor).to_i
     length > threshold
@@ -100,7 +103,4 @@ class HashMap
 
     hash_code % capacity
   end
-
-  attr_accessor :capacity, :buckets
-  attr_reader :load_factor
 end
