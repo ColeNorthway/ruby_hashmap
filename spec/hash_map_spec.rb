@@ -19,6 +19,28 @@ RSpec.describe LinkedList do
       expect(map.get('key')).to eql('something')
     end
   end
+
+  describe '#get' do
+    it 'Should be null if value not found with items' do
+      map = HashMap.new
+      map.set('key', 'value')
+      map.set('key1', 'value2')
+      expect(map.get('key2')).to eql(nil)
+    end
+
+    it 'Should be be null if value not found with no items' do
+      map = HashMap.new
+      expect(map.get('key')).to eql(nil)
+    end
+
+    it 'Should find the item if many items' do
+      map = HashMap.new
+      map.set('key', 'value')
+      map.set('key1', 'value2')
+      expect(map.get('key')).to eql('value')
+    end
+  end
+
 end
 
 
