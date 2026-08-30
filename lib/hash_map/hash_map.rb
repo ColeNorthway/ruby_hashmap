@@ -30,6 +30,8 @@ class HashMap
   end
 
   def length
+    @buckets.reduce(0) { |acc, b| acc += b.length }
+  end
 
   private
 
