@@ -35,6 +35,13 @@ class HashMap
     @buckets.reduce(0) { |acc, b| acc + b.length }
   end
 
+  def has?(key)
+    @buckets.each do |b|
+      return true if b.any? { |pair| pair.keys.include?(key) }
+    end
+    false
+  end
+
   private
 
   def realloc?
