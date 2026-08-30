@@ -1,0 +1,4 @@
+Naming/MethodParameterName:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false

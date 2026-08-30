@@ -39,8 +39,62 @@ RSpec.describe HashMap do
       map.set('key1', 'value2')
       expect(map.get('key')).to eql('value')
     end
+
+    it 'Should find the item if reallocated' do
+      map = HashMap.new
+      map.set('key', 'value')
+      map.set('key1', 'value')
+      map.set('key2', 'value')
+      map.set('key3', 'value')
+      map.set('key4', 'value')
+      map.set('key5', 'value')
+      map.set('key6', 'value')
+      map.set('key7', 'value')
+      map.set('key8', 'value')
+      map.set('key9', 'value')
+      map.set('key10', 'value')
+      map.set('key11', 'value')
+      map.set('key12', 'value')
+      map.set('key13', 'value')
+      map.set('key14', 'value')
+      map.set('key15', 'value')
+      expect(map.get('key15')).to eql('value')
+    end
   end
 
+  describe '#length' do
+    it 'Should equal 0 if no items exist' do
+      hm = HashMap.new
+      expect(hm.length).to eql(0)
+    end
+
+    it 'Should equal 1 if one item exists' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      expect(hm.length).to eql(1)
+    end
+
+    it 'Should equal 15 if 16 items exist' do
+      hm = HashMap.new
+      map.set('key', 'value')
+      map.set('key1', 'value')
+      map.set('key2', 'value')
+      map.set('key3', 'value')
+      map.set('key4', 'value')
+      map.set('key5', 'value')
+      map.set('key6', 'value')
+      map.set('key7', 'value')
+      map.set('key8', 'value')
+      map.set('key9', 'value')
+      map.set('key10', 'value')
+      map.set('key11', 'value')
+      map.set('key12', 'value')
+      map.set('key13', 'value')
+      map.set('key14', 'value')
+      map.set('key15', 'value')
+      expect(hm.length).to eql(16)
+    end
+  end
 end
 
 

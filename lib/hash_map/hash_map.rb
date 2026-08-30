@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# HashMap is a simple implementation of a classic hashing structure
+#   - Only thing is it only takes strings as keys
+#   - It is a practice project to understand hashmaps at a lower level
 class HashMap
   def initialize
     @capacity = 16
@@ -16,8 +19,6 @@ class HashMap
     else
       @buckets[i].push({ key => value })
     end
-
-    # Handle realloc here
   end
 
   def get(key)
@@ -28,7 +29,13 @@ class HashMap
     @buckets[i][j][key]
   end
 
+  def length
+
   private
+
+  def realloc
+
+  end
 
   def key?(key, index)
     @buckets[index].any? { |pair| pair.keys.include?(key) }
