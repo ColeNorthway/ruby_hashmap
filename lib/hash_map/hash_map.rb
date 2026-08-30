@@ -56,6 +56,14 @@ class HashMap
     @buckets.each(&:clear)
   end
 
+  def keys
+    acc = []
+    @buckets.each do |b|
+      b.each { |pair| acc.push(pair.keys[0]) }
+    end
+    acc
+  end
+
   private
 
   attr_accessor :capacity, :buckets
