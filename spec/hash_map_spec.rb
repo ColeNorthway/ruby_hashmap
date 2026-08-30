@@ -172,6 +172,121 @@ RSpec.describe HashMap do
       expect(hm.has?('   ')).to eql(false)
     end
   end
+
+  describe '#remove' do
+    it 'Should be nil if HashMap is empty' do
+      hm = HashMap.new
+      expect(hm.remove('key')).to eql(nil)
+    end
+
+    it 'Should be the value if HashMap length is 1' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      expect(hm.remove('key')).to eql('value')
+    end
+
+    it 'Should be nil if HashMap length is 1 and arg is not present' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      expect(hm.remove(' ')).to eql(nil)
+    end
+
+    it 'Length should be 0 after removing with prev length 1' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      hm.remove('key')
+      expect(hm.length).to eql(0)
+    end
+
+    it 'Should be the value if HashMap length is 3 and arg is present' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      hm.set('key1', 'value')
+      hm.set('key2', 'value')
+      expect(hm.remove('key2')).to eql('value')
+    end
+
+    it 'Should be nil if HashMap length is 3 and arg is not present' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      hm.set('key1', 'value')
+      hm.set('key2', 'value')
+      expect(hm.remove('ky2')).to eql(nil)
+    end
+
+    it 'Length should be 2 after removing with prev length 3' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      hm.set('key1', 'value')
+      hm.set('key2', 'value')
+      hm.remove('key2')
+      expect(hm.length).to eql(2)
+    end
+
+    it 'Should be the value if HashMap length is 16 and arg is present' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      hm.set('key1', 'value')
+      hm.set('key2', 'value')
+      hm.set('key3', 'value')
+      hm.set('key4', 'value')
+      hm.set('key5', 'value')
+      hm.set('key6', 'value')
+      hm.set('key7', 'value')
+      hm.set('key8', 'value')
+      hm.set('key9', 'value')
+      hm.set('key10', 'value')
+      hm.set('key11', 'value')
+      hm.set('key12', 'value')
+      hm.set('key13', 'value')
+      hm.set('key14', 'value')
+      hm.set('key15', 'value')
+      expect(hm.remove('key15')).to eql('value')
+    end
+
+    it 'Should be nil if HashMap length is 16 and arg is not present' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      hm.set('key1', 'value')
+      hm.set('key2', 'value')
+      hm.set('key3', 'value')
+      hm.set('key4', 'value')
+      hm.set('key5', 'value')
+      hm.set('key6', 'value')
+      hm.set('key7', 'value')
+      hm.set('key8', 'value')
+      hm.set('key9', 'value')
+      hm.set('key10', 'value')
+      hm.set('key11', 'value')
+      hm.set('key12', 'value')
+      hm.set('key13', 'value')
+      hm.set('key14', 'value')
+      hm.set('key15', 'value')
+      expect(hm.remove('key150')).to eql(nil)
+    end
+
+    it 'Length should be 15 after removing with prev length 16' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      hm.set('key1', 'value')
+      hm.set('key2', 'value')
+      hm.set('key3', 'value')
+      hm.set('key4', 'value')
+      hm.set('key5', 'value')
+      hm.set('key6', 'value')
+      hm.set('key7', 'value')
+      hm.set('key8', 'value')
+      hm.set('key9', 'value')
+      hm.set('key10', 'value')
+      hm.set('key11', 'value')
+      hm.set('key12', 'value')
+      hm.set('key13', 'value')
+      hm.set('key14', 'value')
+      hm.set('key15', 'value')
+      hm.remove('key15')
+      expect(hm.length).to eql(15)
+    end
+  end
 end
 
 
