@@ -68,6 +68,12 @@ class HashMap
     end
   end
 
+  def entries
+    @buckets.each_with_object([]) do |b, arr|
+      b.each { |pair| arr.push(pair) }
+    end
+  end
+
   private
 
   attr_accessor :capacity, :buckets

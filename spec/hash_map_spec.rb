@@ -421,7 +421,7 @@ RSpec.describe HashMap do
     it 'Should be accurate for HashMap of length 1' do
       hm = HashMap.new
       hm.set('key', 'value')
-      expect(hm.entries).to eql([{ 'key' => value }])
+      expect(hm.entries).to eql([{ 'key' => 'value' }])
     end
 
     it 'Should be accurate for HashMap of length 3' do
