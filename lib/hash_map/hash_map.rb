@@ -42,6 +42,16 @@ class HashMap
     false
   end
 
+  def remove(key)
+    return nil unless has?(key)
+
+    i = hash(key)
+    j = key_index(key, i)
+    val = @buckets[i][j][key]
+    @buckets[i].delete( { key => val } )
+    val
+  end
+
   private
 
   def realloc?
