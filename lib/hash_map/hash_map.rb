@@ -57,11 +57,15 @@ class HashMap
   end
 
   def keys
-    acc = []
-    @buckets.each do |b|
+    @buckets.each_with_object([]) do |b, acc|
       b.each { |pair| acc.push(pair.keys[0]) }
     end
-    acc
+  end
+
+  def values
+    @buckets.each_with_object([]) do |b, acc|
+      b.each { |pair| acc.push(pair.values[0]) }
+    end
   end
 
   private

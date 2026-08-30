@@ -368,6 +368,91 @@ RSpec.describe HashMap do
       expect(hm.keys.length).to eql(16)
     end
   end
+
+
+  describe '#values' do
+    it 'Should be [] for empty HashMap' do
+      hm = HashMap.new
+      expect(hm.values).to eql([])
+    end
+
+    it 'Should be accurate for HashMap of length 1' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      expect(hm.values).to eql(['value'])
+    end
+
+    it 'Should be accurate for HashMap of length 3' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      hm.set('key1', 'value')
+      hm.set('key2', 'value')
+      expect(hm.values.length).to eql(3)
+    end
+
+    it 'Should be accurate for HashMap of length 16' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      hm.set('key1', 'value')
+      hm.set('key2', 'value')
+      hm.set('key3', 'value')
+      hm.set('key4', 'value')
+      hm.set('key5', 'value')
+      hm.set('key6', 'value')
+      hm.set('key7', 'value')
+      hm.set('key8', 'value')
+      hm.set('key9', 'value')
+      hm.set('key10', 'value')
+      hm.set('key11', 'value')
+      hm.set('key12', 'value')
+      hm.set('key13', 'value')
+      hm.set('key14', 'value')
+      hm.set('key15', 'value')
+      expect(hm.values.length).to eql(16)
+    end
+  end
+
+  describe '#entries' do
+    it 'Should be [] for empty HashMap' do
+      hm = HashMap.new
+      expect(hm.entries).to eql([])
+    end
+
+    it 'Should be accurate for HashMap of length 1' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      expect(hm.entries).to eql([{ 'key' => value }])
+    end
+
+    it 'Should be accurate for HashMap of length 3' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      hm.set('key1', 'value')
+      hm.set('key2', 'value')
+      expect(hm.entries.length).to eql(3)
+    end
+
+    it 'Should be accurate for HashMap of length 16' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      hm.set('key1', 'value')
+      hm.set('key2', 'value')
+      hm.set('key3', 'value')
+      hm.set('key4', 'value')
+      hm.set('key5', 'value')
+      hm.set('key6', 'value')
+      hm.set('key7', 'value')
+      hm.set('key8', 'value')
+      hm.set('key9', 'value')
+      hm.set('key10', 'value')
+      hm.set('key11', 'value')
+      hm.set('key12', 'value')
+      hm.set('key13', 'value')
+      hm.set('key14', 'value')
+      hm.set('key15', 'value')
+      expect(hm.entries.length).to eql(16)
+    end
+  end
 end
 
 
