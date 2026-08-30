@@ -1,2 +1,4 @@
 Naming/MethodParameterName:
   Enabled: false
+Naming/AccessorMethodName:
+  Enabled: false

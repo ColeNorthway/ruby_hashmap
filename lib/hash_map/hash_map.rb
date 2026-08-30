@@ -19,6 +19,8 @@ class HashMap
     else
       @buckets[i].push({ key => value })
     end
+
+    realloc
   end
 
   def get(key)
@@ -30,13 +32,35 @@ class HashMap
   end
 
   def length
-    @buckets.reduce(0) { |acc, b| acc += b.length }
+    @buckets.reduce(0) { |acc, b| acc + b.length }
   end
 
   private
 
-  def realloc
+  def realloc?
+    threshold = (@capacity * @load_factor).to_i
+    length > threshold
+  end
 
+  def get_pairs
+    @buckets.reduce([]) { |acc, b| acc + b }
+  end
+
+  def set_pairs(pairs)
+    pairs.each do |p|
+      i = hash(p.keys[0])
+      @buckets[i].push(p)
+    end
+  end
+
+  def realloc
+    return unless realloc?
+
+    pairs = get_pairs
+    @capacity *= 2
+    @buckets = Array.new(@capacity) { [] }
+
+    set_pairs(pairs)
   end
 
   def key?(key, index)
