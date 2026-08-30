@@ -52,6 +52,10 @@ class HashMap
     val
   end
 
+  def clear
+    @buckets.each(&:clear)
+  end
+
   private
 
   def realloc?

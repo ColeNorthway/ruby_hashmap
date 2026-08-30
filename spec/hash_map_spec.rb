@@ -287,6 +287,45 @@ RSpec.describe HashMap do
       expect(hm.length).to eql(15)
     end
   end
+
+  describe '#clear' do
+    it 'Should have length zero after clear on previous length zero' do
+      hm = HashMap.new
+      hm.clear
+      expect(hm.length).to eql(0)
+    end
+
+    it 'Should have length zero after clear on previous length three' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      hm.set('key1', 'value')
+      hm.set('key2', 'value')
+      hm.clear
+      expect(hm.length).to eql(0)
+    end
+
+    it 'Should have length zero after clear on previous length sixteen' do
+      hm = HashMap.new
+      hm.set('key', 'value')
+      hm.set('key1', 'value')
+      hm.set('key2', 'value')
+      hm.set('key3', 'value')
+      hm.set('key4', 'value')
+      hm.set('key5', 'value')
+      hm.set('key6', 'value')
+      hm.set('key7', 'value')
+      hm.set('key8', 'value')
+      hm.set('key9', 'value')
+      hm.set('key10', 'value')
+      hm.set('key11', 'value')
+      hm.set('key12', 'value')
+      hm.set('key13', 'value')
+      hm.set('key14', 'value')
+      hm.set('key15', 'value')
+      hm.clear
+      expect(hm.length).to eql(0)
+    end
+  end
 end
 
 
