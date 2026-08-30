@@ -10,8 +10,8 @@ class HashMap
   def set(key, value)
     i = hash(key)
 
-    if key?(key)
-      j = key_index(key)
+    if key?(key, i)
+      j = key_index(key, i)
       @buckets[i][j][key] = value
     else
       @buckets[i].push({ key => value })
@@ -20,14 +20,22 @@ class HashMap
     # Handle realloc here
   end
 
-  private
+  def get(key)
+    i = hash(key)
+    j = key_index(key, i)
+    return nil if j.nil?
 
-  def key?(key)
-    @buckets.any? { |pair| pair.keys.include?(key) }
+    @buckets[i][j][key]
   end
 
-  def key_index(key)
-    @buckets.index { |pair| pair.keys.include?(key) }
+  private
+
+  def key?(key, index)
+    @buckets[index].any? { |pair| pair.keys.include?(key) }
+  end
+
+  def key_index(key, index)
+    @buckets[index].index { |pair| pair.keys.include?(key) }
   end
 
   def hash(key)
