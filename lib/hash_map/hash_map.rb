@@ -7,7 +7,28 @@ class HashMap
     @buckets = Array.new(16) { Array.new }
   end
 
+  def set(key, value)
+    i = hash(key)
+
+    if key?(key)
+      j = key_index(key)
+      @buckets[i][j][key] = value
+    else
+      @buckets[i].push({ key => value })
+    end
+
+    # Handle realloc here
+  end
+
   private
+
+  def key?(key)
+    @buckets.any? { |pair| pair.keys.include?(key) }
+  end
+
+  def key_index(key)
+    @buckets.index { |pair| pair.keys.include?(key) }
+  end
 
   def hash(key)
     hash_code = 0

@@ -2,9 +2,9 @@
 
 # frozen_string_literal: true
 
-require_relative '../lib/hash_map//hash_map'
+require_relative '../lib/hash_map/hash_map'
 
-RSpec.describe LinkedList do
+RSpec.describe HashMap do
   describe '#set' do
     it 'Should have the value inserted after setting' do
       map = HashMap.new
